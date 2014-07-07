@@ -1,0 +1,17 @@
+{
+  "name": "atom-shell-activitykit",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chitacan",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "load-grunt-tasks": "*",
+    "grunt": "*",
+    "grunt-download-atom-shell": "*",
+    "d3": "~3.4.9",
+    "activitykit": "git://github.com/chitacan/activitykit",
+    "grunt-shell": "~0.7.0"
+  }
+}
