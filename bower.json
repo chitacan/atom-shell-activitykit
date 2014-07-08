@@ -1,0 +1,20 @@
+{
+  "name": "atom-shell-activitykit",
+  "version": "0.0.0",
+  "homepage": "https://github.com/chitacan/atom-shell-activitykit",
+  "authors": [
+    "kyung yeol kim <chitacan@gmail.com>"
+  ],
+  "license": "BSD-2-Clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.4.9"
+  }
+}

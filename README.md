@@ -15,6 +15,7 @@ visualize android activity stack based on [d3](http://d3js.org) & [activitykit](
 $ git clone https://github.com/chitacan/atom-shell-activitykit
 $ cd atom-shell-activitykit
 $ npm install
+$ bower install
 $ grunt install
 $ grunt run
 ```

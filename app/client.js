@@ -1,4 +1,4 @@
-var d3 = require('d3');
+var d3 = require('./lib/d3/d3.js');
 var activitykit = require('activitykit');
 
 var MARGIN = {top: 0, right: 40, bottom: 0, left: 40}
