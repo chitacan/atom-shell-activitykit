@@ -1,5 +1,15 @@
+body {
+  font-family: "RobotoDraft", sans-serif;
+  font-weight: 400;
+}
+
+#status {
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
 svg {
-  font: 12px sans-serif;
+  font-size: 0.8em;
 }
 
 .axis path, .axis line {
