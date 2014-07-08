@@ -16,6 +16,5 @@ $ git clone https://github.com/chitacan/atom-shell-activitykit
 $ cd atom-shell-activitykit
 $ npm install
 $ bower install
-$ grunt install
-$ grunt run
+$ grunt
 ```

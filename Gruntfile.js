@@ -21,6 +21,11 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('default', [
+    'download-atom-shell',
+    'run'
+  ]);
+
   grunt.registerTask('install', [
     'download-atom-shell'
   ]);
