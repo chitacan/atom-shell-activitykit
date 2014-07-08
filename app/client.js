@@ -15,7 +15,6 @@ var tree = d3.layout.tree()
 var svg = d3.select("body").append("svg")
 .attr("width", width + MARGIN.left + MARGIN.right)
 .attr("height", height + MARGIN.top + MARGIN.bottom)
-.style("margin", "1em 0 1em " + (-MARGIN.left) + "px");
 
 var g = svg
 .append("g")
