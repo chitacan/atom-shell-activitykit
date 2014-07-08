@@ -7,6 +7,7 @@ var MARGIN = {top: 0, right: 40, bottom: 0, left: 40}
   , duration = 750
   , step   = 100;
 
+var statusInfo = d3.select('#status');
 var tree = d3.layout.tree()
 .size([height, 1])
 .separation(function() { return 1; });
@@ -24,6 +25,10 @@ g.append("g").attr("class", "link")
 g.append("g").attr("class", "node")
 
 function updateTree(root) {
+  statusInfo.style({
+    'display': 'none'
+  });
+
   var stack = root.stack;
   var focused = root.focused;
 
@@ -132,11 +137,17 @@ function layout(svg) {
 }
 
 function update() {
-  activitykit.getActivityInfo().then(function(stream) {
+  activitykit.getActivityInfo()
+  .then(function(stream) {
     stream.on('data', function(data) {
       var data = JSON.parse(data.toString());
       updateTree(data);
     });
+  })
+  .catch(function(e) {
+    statusInfo
+    .style({ 'display': 'block' })
+    .text(e.message);
   });
 }
 
