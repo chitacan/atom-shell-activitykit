@@ -1,5 +1,6 @@
 body {
   font-family: "RobotoDraft", sans-serif;
+  color: #444;
   font-weight: 400;
 }
 
@@ -9,7 +10,7 @@ body {
 }
 
 svg {
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 .axis path, .axis line {
@@ -22,8 +23,6 @@ svg {
 .link,
 .node rect {
   fill: none;
-  stroke: #636363;
-  stroke-width: 1.5px;
 }
 
 .link {
@@ -45,12 +44,12 @@ text,
 }
 
 .node .task rect {
-  fill: #bdbdbd;
+  fill: #03A9F4;
   stroke: none;
 }
 
 .node .stack rect {
-  stroke: #e6550d;
+  fill: #eeeeee;
 }
 
 .node .data rect {
@@ -62,12 +61,16 @@ text,
   stroke: none;
 }
 
-.node .code text {
-  font-family: monospace;
+.node text {
+  fill: #4F5656;
+}
+
+.node .task text.name {
+  fill: #f0f0f0;
 }
 
 .node .history rect {
-  fill: #a1d99b;
+  fill: #1DE9B6;
   stroke: none;
 }
 
@@ -83,22 +86,20 @@ text,
 .link .to-history {
   stroke-dasharray: .5,3.5;
   stroke-linecap: round;
+  stroke-width: 1.5;
 }
 
 .link .from-data {
   stroke: #3182bd;
 }
 
-.root {
-  display: none;
-}
-
+.root,
 .from-root {
   display: none;
 }
 
 .node .history rect.focused {
-  fill: yellow;
+  fill: #FFEB3B;
 }
 
 code span {
