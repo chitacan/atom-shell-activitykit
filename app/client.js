@@ -63,7 +63,10 @@ function updateTree(root) {
   .text(function(d) { return d.name; })
   .each(function(d) { d.width = Math.max(32, this.getComputedTextLength() + 12); })
   node.select('text.des')
-  .text(function(d) { return d.component; })
+  .text(function(d) {
+    if (!d.component) return;
+    return d.component.split('.').pop();
+  })
   .attr("x", function(d) { return d.width + 10; });
 
   node.selectAll('rect')
