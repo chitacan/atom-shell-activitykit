@@ -3,7 +3,7 @@ var activitykit = require('activitykit');
 
 var MARGIN = {top: 5, right: 40, bottom: 5, left: 40}
   , width  = 600
-  , height = 400
+  , height = window.innerHeight
   , duration = 750
   , step   = 100;
 
@@ -156,3 +156,11 @@ function update() {
 update();
 setInterval(update, 1000);
 
+window.onresize = function() {
+  var h = window.innerHeight - MARGIN.top - MARGIN.bottom;
+  svg.attr("height", h)
+
+  tree.size([h, 1])
+
+  svg.call(layout);
+}
