@@ -1,7 +1,7 @@
 var d3 = require('./lib/d3/d3.js');
 var activitykit = require('activitykit');
 
-var MARGIN = {top: 0, right: 40, bottom: 0, left: 40}
+var MARGIN = {top: 5, right: 40, bottom: 5, left: 40}
   , width  = 600
   , height = 400
   , duration = 750
@@ -13,8 +13,8 @@ var tree = d3.layout.tree()
 .separation(function() { return 1; });
 
 var svg = d3.select("body").append("svg")
-.attr("width", width + MARGIN.left + MARGIN.right)
-.attr("height", height + MARGIN.top + MARGIN.bottom)
+.attr("width", width - MARGIN.left - MARGIN.right)
+.attr("height", height - MARGIN.top - MARGIN.bottom)
 
 var g = svg
 .append("g")
