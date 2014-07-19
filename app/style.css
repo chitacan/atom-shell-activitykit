@@ -2,6 +2,7 @@ body {
   font-family: "RobotoDraft", sans-serif;
   color: #444;
   font-weight: 400;
+  margin: 0px;
 }
 
 #status {
