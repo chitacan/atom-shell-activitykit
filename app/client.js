@@ -2,7 +2,7 @@ var d3 = require('./lib/d3/d3.js');
 var activitykit = require('activitykit');
 
 var MARGIN = {top: 5, right: 40, bottom: 5, left: 40}
-  , width  = 600
+  , width  = window.innerWidth
   , height = window.innerHeight
   , duration = 750
   , step   = 100;
@@ -157,6 +157,7 @@ setInterval(update, 1000);
 
 window.onresize = function() {
   var h = window.innerHeight - MARGIN.top - MARGIN.bottom;
+  var w = window.innerWidth  - MARGIN.left - MARGIN.right;
   svg.attr("height", h)
 
   tree.size([h, 1])
