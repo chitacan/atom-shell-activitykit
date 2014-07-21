@@ -64,8 +64,7 @@ function updateTree(root) {
   .each(function(d) { d.width = Math.max(32, this.getComputedTextLength() + 12); })
   node.select('text.des')
   .text(function(d) {
-    if (!d.component) return;
-    return d.component.split('.').pop();
+    if (d.package) return d.package;
   })
   .attr("x", function(d) { return d.width + 10; });
 
