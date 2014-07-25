@@ -75,7 +75,7 @@ function updateTree(root) {
     'focused': function(d) {
       return d.type === 'history' &&
         d.taskId === focused.taskId &&
-        d.component === focused.component;
+        d.hash === focused.hash;
     }
   });
 
