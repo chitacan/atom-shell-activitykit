@@ -7,7 +7,7 @@ var anchor = document.querySelector('body')
   , width  = parent.clientWidth  || parent.innerWidth
   , height = parent.clientHeight || parent.innerHeight
   , duration = 750
-  , step   = 100;
+  , step     = 130;
 
 var statusInfo = d3.select('#status');
 var tree = d3.layout.tree()
@@ -139,13 +139,15 @@ function layout(svg) {
   );
 }
 
-function update() {
+function update(stack) {
+  var data = JSON.parse(stack.toString());
+  updateTree(data);
+}
+
+function fetch() {
   activitykit.getActivityInfo()
   .then(function(stream) {
-    stream.on('data', function(data) {
-      var data = JSON.parse(data.toString());
-      updateTree(data);
-    });
+    stream.on('data', update);
   })
   .catch(function(e) {
     statusInfo
@@ -154,13 +156,19 @@ function update() {
   });
 }
 
-update();
-setInterval(update, 1000);
+var delay = 1000;
+var intervalId;
+var autoUpdate = true;
+
+fetch();
+if (autoUpdate)
+  intervalId = setInterval(fetch, delay);
 
 window.onresize = function() {
   var h = window.innerHeight - MARGIN.top - MARGIN.bottom;
   var w = window.innerWidth  - MARGIN.left - MARGIN.right;
   svg.attr("height", h)
+  svg.attr("width",  w)
 
   tree.size([h, 1])
 

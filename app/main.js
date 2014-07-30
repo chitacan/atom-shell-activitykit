@@ -6,7 +6,7 @@ var app      = require('app')
 
 app.on('ready', function() {
   win = new BW({
-    'width'  : 700,
+    'width'  : 800,
     'height' : 500,
     'title'  : 'atom-shell-activitykit'
   });
