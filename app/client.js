@@ -142,6 +142,13 @@ function layout(svg) {
   );
 }
 
+// how to check diff??
+//  - task count changed
+//  - task's activity count changed
+//  - activity hash changed
+function isDiff() {
+}
+
 function update(stack) {
   var data = JSON.parse(stack.toString());
   updateTree(data);
