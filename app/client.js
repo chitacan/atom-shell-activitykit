@@ -158,10 +158,10 @@ function fetch() {
 
 var delay = 1000;
 var intervalId;
-var autoUpdate = true;
+var autoFetch = true;
 
 fetch();
-if (autoUpdate)
+if (autoFetch)
   intervalId = setInterval(fetch, delay);
 
 window.onresize = function() {
