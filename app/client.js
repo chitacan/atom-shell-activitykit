@@ -1,13 +1,16 @@
-var d3 = require('./lib/d3/d3.js');
-var activitykit = require('activitykit');
+var d3          = require('./lib/d3/d3.js')
+  , activitykit = require('activitykit');
 
-var anchor = document.querySelector('body')
-  , parent = anchor.parentElement || window
-  , MARGIN = {top: 5, right: 40, bottom: 5, left: 40}
-  , width  = parent.clientWidth  || parent.innerWidth
-  , height = parent.clientHeight || parent.innerHeight
+var anchor   = document.querySelector('body')
+  , parent   = anchor.parentElement || window
+  , MARGIN   = {top: 5, right: 40, bottom: 5, left: 40}
+  , width    = parent.clientWidth  || parent.innerWidth
+  , height   = parent.clientHeight || parent.innerHeight
   , duration = 750
-  , step     = 130;
+  , step     = 130
+  , delay    = 1000
+  , intervalId;
+
 
 var statusInfo = d3.select('#status');
 var tree = d3.layout.tree()
@@ -144,6 +147,7 @@ function update(stack) {
   updateTree(data);
 }
 
+// fetch & update activity stack tree
 function fetch() {
   activitykit.getActivityInfo()
   .then(function(stream) {
@@ -156,13 +160,18 @@ function fetch() {
   });
 }
 
-var delay = 1000;
-var intervalId;
-var autoFetch = true;
+function start(autoFetch) {
+  fetch();
+  if (autoFetch)
+    intervalId = setInterval(fetch, delay);
+}
 
-fetch();
-if (autoFetch)
-  intervalId = setInterval(fetch, delay);
+function stop() {
+  if (intervalId)
+    clearInterval(intervalId);
+}
+
+start(true);
 
 window.onresize = function() {
   var h = window.innerHeight - MARGIN.top - MARGIN.bottom;
