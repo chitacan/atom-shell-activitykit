@@ -146,12 +146,42 @@ function layout(svg) {
 //  - task count changed
 //  - task's activity count changed
 //  - activity hash changed
-function isDiff() {
+function isDiff(lhs, rhs) {
+
+  function nestedCnt(lnode, rnode) {
+    var l = lnode.children
+      , r = rnode.children;
+
+    if (l === undefined && r === undefined) return false;
+
+    if (l.length != r.length) return true;
+
+    for(i = 0; i < l.length; i++) {
+      if (nestedCnt(l[i], r[i]))
+        return true;
+    }
+    return false;
+  }
+
+  // focused activity changed
+  if (lhs.focused.hash !== rhs.focused.hash)
+    return true;
+
+  // recent count changed
+  if (lhs.recent.length !== rhs.recent.length)
+    return true;
+
+  return nestedCnt(lhs.stack, rhs.stack);
 }
 
+var prev;
 function update(stack) {
   var data = JSON.parse(stack.toString());
   updateTree(data);
+
+  if (prev)
+    console.log(isDiff(prev,data));
+  prev = data;
 }
 
 // fetch & update activity stack tree
