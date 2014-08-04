@@ -9,8 +9,8 @@ var anchor   = document.querySelector('body')
   , duration = 750
   , step     = 130
   , delay    = 1000
-  , intervalId;
-
+  , intervalId
+  , prev;
 
 var statusInfo = d3.select('#status');
 var tree = d3.layout.tree()
@@ -29,6 +29,7 @@ g.append("g").attr("class", "link")
 g.append("g").attr("class", "node")
 
 function updateTree(root) {
+  console.log('updated');
   statusInfo.style({
     'display': 'none'
   });
@@ -148,20 +149,8 @@ function layout(svg) {
 //  - activity hash changed
 function isDiff(lhs, rhs) {
 
-  function nestedCnt(lnode, rnode) {
-    var l = lnode.children
-      , r = rnode.children;
-
-    if (l === undefined && r === undefined) return false;
-
-    if (l.length != r.length) return true;
-
-    for(i = 0; i < l.length; i++) {
-      if (nestedCnt(l[i], r[i]))
-        return true;
-    }
-    return false;
-  }
+  if (!lhs || !rhs)
+    return true;
 
   // focused activity changed
   if (lhs.focused.hash !== rhs.focused.hash)
@@ -171,16 +160,35 @@ function isDiff(lhs, rhs) {
   if (lhs.recent.length !== rhs.recent.length)
     return true;
 
-  return nestedCnt(lhs.stack, rhs.stack);
+  var ltasks = lhs.stack.children
+    , rtasks = rhs.stack.children;
+
+  if (!ltasks || !rtasks)
+    return true;
+
+  var lnodes = ltasks[1].children
+    , rnodes = rtasks[1].children;
+
+  if (!lnodes || !rnodes)
+    return true;
+
+  if (lnodes.length != rnodes.length)
+    return true;
+
+  for (i = 0; i < lnodes.length; i++) {
+    if (lnodes[i].children.length != rnodes[i].children.length)
+      return true;
+  }
+
+  return false;
 }
 
-var prev;
 function update(stack) {
   var data = JSON.parse(stack.toString());
-  updateTree(data);
 
-  if (prev)
-    console.log(isDiff(prev,data));
+  if (isDiff(prev, data))
+    updateTree(data);
+
   prev = data;
 }
 
