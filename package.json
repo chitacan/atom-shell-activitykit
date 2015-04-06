@@ -8,10 +8,6 @@
   "author": "chitacan",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "load-grunt-tasks": "*",
-    "grunt": "*",
-    "grunt-download-atom-shell": "*",
-    "activitykit": "git://github.com/chitacan/activitykit",
-    "grunt-shell": "~0.7.0"
+    "activitykit": "git://github.com/chitacan/activitykit"
   }
 }
