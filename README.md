@@ -2,7 +2,7 @@
 
 visualize android activity stack based on [d3](http://d3js.org) & [activitykit](https://github.com/chitacan/activitykit) & [atom-shell](https://github.com/atom/atom-shll)
 
-![](https://dl.dropboxusercontent.com/content_link/WXQGw24PxgPUKaQIPDmwNeCqpRlRAwg52AXAy43XXZ5dcRFIQGEbuiFknvPdC4ox?dl=1)
+![](https://dl.dropbox.com/s/xgur0l5joiengp7/atom-shell-activitykit.gif)
 
 ## requirements
 
