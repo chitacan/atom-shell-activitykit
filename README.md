@@ -1,6 +1,6 @@
 # atom-shell-activitykit
 
-visualize android activity stack based on [d3](http://d3js.org) & [activitykit](https://github.com/chitacan/activitykit) & [atom-shell](https://github.com/atom/atom-shll)
+visualize android activity stack. Based on [d3](http://d3js.org) & [activitykit](https://github.com/chitacan/activitykit) & [electron](https://github.com/atom/electron)
 
 ![](https://dl.dropbox.com/s/xgur0l5joiengp7/atom-shell-activitykit.gif)
 
@@ -13,12 +13,12 @@ visualize android activity stack based on [d3](http://d3js.org) & [activitykit](
 ## run
 
 ```sh
-$ npm install -g atom-shell
+$ npm install -g electron-prebuilt
 ```
 
 ```sh
 $ git clone https://github.com/chitacan/atom-shell-activitykit
 $ cd atom-shell-activitykit
 $ npm install
-$ atom-shell app
+$ electron app
 ```
